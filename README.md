@@ -1,2 +1,2 @@
 # Project-Tech
-My repository for the Tech project
+My repository for the Tech project at CMDA 
