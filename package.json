@@ -1,0 +1,21 @@
+{
+  "name": "datingsiteforpunks",
+  "version": "1.0.0",
+  "dependencies": {
+    "camelcase": "^5.3.1"
+  },
+  "description": "my feature for project TECH at CMDA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/countnick"
+  },
+  "author": "Nick Meijer",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
