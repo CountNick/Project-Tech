@@ -10,9 +10,9 @@ var app = express();
 app.use(express.static('static'));
 
 // Route not found (404)
-//Source: https://davidburgos.blog/how-to-handle-404-and-500-errors-on-expressjs/
-app.use(function(req, res, next) {
-    return res.status(404).send({ message: 'Route'+req.url+' Not found.' });
+//https://expressjs.com/en/starter/faq.html
+app.use(function (req, res, next) {
+    res.status(404).send("Sorry can't find that page!");
   });
   
     // Listen to port 5000
