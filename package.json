@@ -2,7 +2,8 @@
   "name": "datingsiteforpunks",
   "version": "1.0.0",
   "dependencies": {
-    "camelcase": "^5.3.1"
+    "camelcase": "^5.3.1",
+    "express": "^4.16.4"
   },
   "description": "my feature for project TECH at CMDA",
   "main": "index.js",
