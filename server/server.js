@@ -8,6 +8,8 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', home);
+app.get('/login', login);
+app.use(notFound);
 
 
 function home(req, res) {
@@ -22,7 +24,7 @@ function notFound(req, res){
     res.status(404).render('notfound');
 }
 
-app.use(notFound);
+
 
 
 // Route not found (404)
