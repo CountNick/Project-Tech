@@ -1,14 +1,9 @@
-/*var camelCase = require('camelcase');
-
-
-console.log(camelCase('foo-bar'));*/
-
 var express = require('express');
 
 var app = express();
 
 app.use(express.static('static'));
-app.set('views', 'views');
+app.set('views', 'view');
 app.set('view engine', 'ejs');
 
 
