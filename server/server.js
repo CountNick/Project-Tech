@@ -8,9 +8,16 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('static'));
+app.set('views', 'views');
 app.set('view engine', 'ejs');
-app.set('views', 'view');
 
+
+app.get('/', home);
+
+
+function home(req, res) {
+    res.render('index')
+  }
 
 
 // Route not found (404)
