@@ -11,20 +11,32 @@ this command will automatically download the _npm packages_ this program is depe
 
 ## Step 2
 
-first cd into the backend directory like so:
+first cd into the server directory:
 
 ```
-cd backend
+cd server
 ```
+
+## Step 3 
+
+Start the server
 
 There are two possible ways to run this program
 
 * use Node, type in:
 ```
-node index.js
+node server.js
 ```
 
 * use Nodemon(automatically installed when you ran _npm install_), type in:
 ```
-nodemon index.js
+nodemon server.js
+```
+
+## Step 4
+
+When the server is running you can visit the following link to see the app running:
+
+```
+http://localhost:5000
 ```
