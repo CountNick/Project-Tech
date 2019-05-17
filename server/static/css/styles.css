@@ -6,21 +6,35 @@ body,html{
 
 *{
     box-sizing: border-box;
+    margin: 0;
 }
 
 p{
     margin: 0;
 }
 
-h1,h2,h3,h4,h5,h6,label{
+@font-face {
+    font-family: 'Skratch Punk';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Skratch Punk'), url('../font/Skratch_Punk.woff') format('woff');
+}
 
-    font-family: 'Arial Black';
+h1,h2,h3,h4,h5,h6{
+
+    font-family: 'Skratch Punk';
     margin: 0;
+}
+
+h1{
+
+    font-size: 2rem;
+
 }
 
 nav{
 
-    background-color: black;
+    background-color: #e6086f;
     width: 100%;
     padding-top: .1rem;
     padding-bottom: .1rem;
@@ -49,11 +63,19 @@ ul li:last-child{
 
 }
 
+a img{
+    width: 3.5rem;
+}
+
+a img :last-child{
+    width: 1rem;
+}
+
 main{
     padding-top: 3.3rem;    
 }
 
-span{
+.profileform{
 
     display: flex;
     flex-direction: column;
@@ -174,4 +196,10 @@ div{
     width: 3.5rem;
     padding: .8rem;
 
+}
+
+span{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
