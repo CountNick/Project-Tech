@@ -3,25 +3,38 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('static'));
-app.set('views', 'view');
+app.set('views', 'view/pages');
 app.set('view engine', 'ejs');
 
 
 app.get('/', home);
 app.get('/login', login);
+app.get('/changeprofile', changeProfile)
 app.use(notFound);
 
 
 function home(req, res) {
-    res.render('index');
+    res.render('index',{
+        title: "Your profile"
+    });
   }
 
 function login(req, res) {
-    res.render('login');
+    res.render('login',{
+        title: "Login"
+    });
+}
+
+function changeProfile(req, res) {
+    res.render('changeprofile',{
+        title: "Change profile"
+    });
 }
 
 function notFound(req, res){
-    res.status(404).render('notfound');
+    res.status(404).render('notfound',{
+        title: "404"
+    });
 }
 
 
