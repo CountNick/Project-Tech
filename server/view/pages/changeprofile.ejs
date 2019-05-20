@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<% include ../partials/head.ejs %>
+<% include ../partials/head %>
 
 <body>
 
@@ -11,7 +11,7 @@
 
     <h1>Change profile</h1>
 
-    <form action="">
+    <form action="/" method = "post">
 
         <fieldset>
 
@@ -21,7 +21,7 @@
 
                 <label for="name">Your name:</label>
 
-                <input type="text" id="name" required>
+                <input type="text" id="name" name="name" required>
 
                 <label for="mail">Your e-mail:</label>
 

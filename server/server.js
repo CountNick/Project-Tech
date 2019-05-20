@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 app.get('/', home);
 app.get('/login', login);
 app.get('/changeprofile', changeProfile)
+app.get('/', form);
 app.use(notFound);
 
 
@@ -29,6 +30,10 @@ function changeProfile(req, res) {
     res.render('changeprofile',{
         title: "Change profile"
     });
+}
+
+function form(req, res){
+    res.render('changeprofile')
 }
 
 function notFound(req, res){
