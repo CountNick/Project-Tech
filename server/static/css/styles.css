@@ -123,9 +123,9 @@ input{
 
 }
 
-.registerButton{
+.cancelButton{
 
-    background-color: #0183D9;
+    background-color: red;
     color: white;
     height: 3rem;
     font-size: 1.2rem;
