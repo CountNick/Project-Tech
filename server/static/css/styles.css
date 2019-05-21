@@ -214,3 +214,10 @@ span{
     flex-direction: row;
     justify-content: flex-end;
 }
+
+article>img{
+    height: 360px;
+    width: 360px;
+    object-fit: cover;
+
+}
