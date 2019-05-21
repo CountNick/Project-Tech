@@ -11,7 +11,13 @@ var data =
         id: "person1",
         name: "Andrea",
         age: "24",
-        bio:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        bio:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        artists:
+                
+                ["The Clash", 
+                "Black Sabbath", 
+                "GBH", 
+                "Skit System"]
     }
 
 
@@ -23,6 +29,7 @@ app.set('view engine', 'ejs');
 app.get('/', home);
 app.get('/login', login);
 app.get('/changeprofile', changeProfile);
+
 app.get('/', changeProfile);
 app.post('/', add);
 app.use(notFound);
@@ -52,6 +59,7 @@ function add(req, res){
     //var id = 
 
     data.name = req.body.name;
+    data.bio = req.body.bio;
 
     res.redirect('/');
 }
