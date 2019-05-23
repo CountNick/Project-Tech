@@ -31,7 +31,7 @@ app.get('/login', login);
 app.get('/changeprofile', changeProfile);
 
 app.get('/', changeProfile);
-app.post('/', add);
+app.post('/', changeInfo);
 app.use(notFound);
 
 
@@ -54,7 +54,7 @@ function changeProfile(req, res) {
 }
 
 
-function add(req, res){
+function changeInfo(req, res){
     
     //var id = 
 

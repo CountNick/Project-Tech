@@ -9,28 +9,21 @@ body,html{
     margin: 0;
 }
 
-p{
+p,.artists{
     margin: 0;
     font-size: 1.2rem;
 }
 
 @font-face {
-    font-family: 'Skratch Punk';
+    font-family: 'Creepster Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Skratch Punk'), url('../font/Skratch_Punk.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'VTC FuzzyPunkySlippers Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('VTC FuzzyPunkySlippers Regular'), url('../font/Skratch_Punk.woff') format('woff');
-}
+    src: local('Creepster Regular'), url('../font/Creepster-Regular.woff') format('woff');
+    }
 
 h1,h2,h3,h4,h5,h6{
 
-    font-family: 'Skratch Punk';
+    font-family: 'Creepster Regular';
     margin: 0;
 }
 
@@ -127,6 +120,7 @@ input, textarea{
 textarea{
 
     height: 10rem;
+    resize: none;
 
 }
 
@@ -227,4 +221,10 @@ article>img{
     width: 360px;
     object-fit: cover;
 
+}
+
+.artists{
+    display: flex;
+    flex-direction: column;
+    color: black;
 }

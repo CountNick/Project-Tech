@@ -26,7 +26,17 @@
             </p>
 
             <h3>My favorite artists</h3>
+                
+                <ul class="artists">        
+                
+                <% for (var index = 0; index < data.artists.length; index++) { %>
+                
+                <li><%= data.artists[index] %></li>
+                
+                <% } %>
 
+                </ul>
+            
             
             <h3>My hobbies</h3>
 
