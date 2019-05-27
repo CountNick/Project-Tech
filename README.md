@@ -1,4 +1,6 @@
-# Project-Tech, Feature installation guide
+# Anarchy Dating, Feature installation guide
+
+![Anarchy Dating logo](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/LogoRoze.png?raw=true)
 
 ## Step 1 
 
