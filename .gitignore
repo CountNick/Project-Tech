@@ -2,3 +2,4 @@ node_modules/
 Wiki_img/
 eventscalendar.html
 .DS_Store
+.eslintrc.js
