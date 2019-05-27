@@ -21,7 +21,7 @@ cd server
 
 ## Step 3 
 
-Start the server
+Start the server the express server
 
 There are two possible ways to run this program
 
