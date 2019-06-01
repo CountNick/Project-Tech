@@ -1,30 +1,30 @@
 /* eslint-disable no-console */
 var express = require("express");
-//var slug = require("slug");
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
+var multer = require("multer");
 
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
-var User = require('../models/user.js');
+var User = require("../models/user.js");
 
 
-require('dotenv').config();
+require("dotenv").config();
 
-mongoose.connect('mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME, {useNewUrlParser: true});
+mongoose.connect("mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT + "/" + process.env.DB_NAME, {useNewUrlParser: true});
 
 var db = mongoose.connection;
 
 
 //Source connection check: https://www.youtube.com/watch?v=cVYQEvP-_PA
 //Check connection
-db.once('open', function(){
-  console.log('Connected to MongoDb');
+db.once("open", function(){
+  console.log("Connected to MongoDb");
 
 });
 
 
 // Check connecyion for db errors
-db.on('error', function(err){
+db.on("error", function(err){
     console.log(err);
 });
 
@@ -56,7 +56,7 @@ function home(req, res) {
     }
 
     else{
-      res.render('index', { 
+      res.render("index", { 
         pageTitle: users.name + "'s Profile", 
         users: users 
         
@@ -112,7 +112,7 @@ function changeInfo(req, res) {
       return;
     }
     else{
-      console.log('succes');
+      console.log("succes");
       res.redirect("/");
 
     }
