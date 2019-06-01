@@ -10,8 +10,6 @@ var User = require('../models/user.js');
 
 require('dotenv').config();
 
-//mongoose.connect("mongodb://127.0.0.1:27017/anarchydating", {useNewUrlParser: true});
-
 mongoose.connect('mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME, {useNewUrlParser: true});
 
 var db = mongoose.connection;
