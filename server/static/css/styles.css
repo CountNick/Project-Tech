@@ -76,6 +76,10 @@ a img {
   width: 3.5rem;
 }
 
+#logo{
+  width:2.8rem;
+}
+
 a img :last-child {
   width: 1rem;
 }
