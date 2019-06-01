@@ -3,3 +3,5 @@ Wiki_img/
 eventscalendar.html
 .DS_Store
 .eslintrc.js
+.env
+.data/

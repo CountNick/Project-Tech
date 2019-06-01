@@ -19,13 +19,25 @@
 
                 <legend>Register</legend>
 
-                <label for="name">Your name:</label>
+                <label class="uploadPicture" for="picture">
+                
+                <img src="../img/icon/add.png" alt="add icon">
 
-                <input type="text" id="name" name="name">
+                <input type="file">
+
+                </label>
+
+                <!--<label for="name">Your name:</label>
+
+                <input type="text" id="name" name="name" value="<%= users.name %>">-->
 
                 <label for="bio">Bio:</label>
 
-                <textarea id="bio" name="bio" maxlength="700" ></textarea>
+                <textarea id="bio" name="bio" maxlength="700" ><%= users.bio %></textarea>
+
+                <label for="artists" name="artists">Artists:</label>
+
+                <input type="text" id="artists">
 
                 <!--<label for="mail">E-mail check:</label>
 

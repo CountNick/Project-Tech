@@ -12,33 +12,25 @@
 
             <img src="img/placeholder.png" alt="ProfilePictue">
 
-            <span>
-           
-            <a href= "changeprofile">
-            <button class ="adjustbutton"><img src="img/icon/pencil.png" alt="adjust"></button>
-            </a>
-            </span>
-
-            <h1><%= data.name %>, <%= data.age %></h1>
-
-            <p>
-                <%= data.bio %>
-            </p>
-
-            <h3>My favorite artists</h3>
-                
-                <ul class="artists">        
-                
-                <% for (var index = 0; index < data.artists.length; index++) { %>
-                
-                <li><%= data.artists[index] %></li>
-                
-                <% } %>
-
-                </ul>
+            <section>
+                <span>
             
-            
-            <h3>My hobbies</h3>
+                <a href= "changeprofile">
+                <button class ="adjustbutton"><img src="img/icon/pencil.png" alt="adjust"></button>
+                </a>
+                </span>
+
+                <h1><%= users.name %>, <%= users.age %></h1>
+
+                <p>
+                    <%= users.bio %>
+                </p>
+
+     
+                
+                
+                <h3>My hobbies</h3>
+            </section>
 
         </article>
     </main>

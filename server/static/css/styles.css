@@ -38,7 +38,13 @@ p {
 }
 
 h1 {
+  font-size: 3rem;
+}
+
+h3 {
+
   font-size: 2rem;
+
 }
 
 nav {
@@ -98,6 +104,7 @@ fieldset {
 
 label {
   margin-bottom: 0.5rem;
+  
 }
 
 input,
@@ -186,15 +193,61 @@ div {
   padding: 0.8rem;
 }
 
+.uploadPicture {
+  overflow: hidden;
+  position: relative;
+}
+
+.uploadPicture [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+
+/* Example stylistic flourishes */
+
+.uploadPicture {
+  background: #f3f3f3;
+  border-radius: .5em;
+  float: left;
+  padding: .5em;
+  width: 48%;
+  text-align: center;
+}
+
+.uploadPicture [type=file] {
+  cursor: pointer;
+}
+
+.uploadPicture img{
+
+  width: 2rem;
+  padding: 3rem 0 3rem 0;
+
+}
+
 span {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
+article section{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 article > img {
-  height: 360px;
-  width: 360px;
+  height: 50%;
+  width: 100%;
   object-fit: cover;
 }
 
