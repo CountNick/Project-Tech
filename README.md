@@ -1,4 +1,6 @@
-# Project-Tech, Feature installation guide
+# Anarchy Dating, Feature installation guide
+
+![Anarchy Dating logo](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/LogoRoze.png?raw=true)
 
 ## Step 1 
 
@@ -19,7 +21,7 @@ cd server
 
 ## Step 3 
 
-Start the server
+Start the server the express server
 
 There are two possible ways to run this program
 
