@@ -85,8 +85,6 @@ function login(req, res) {
 
 function changeProfile(req, res) {
 
-  
-  
   User.findOne({}, function(err, users){
 
     if(err){
@@ -111,9 +109,6 @@ function changeInfo(req, res) {
 
   //Filling users object with aubmitted information
   users.bio = req.body.bio;
-  //users.artists = users.artists.$push;
-  //users.artists.push(req.body.artists);
-
 
   //Getting query that has to be changed
   var query = {id: req.params.id};

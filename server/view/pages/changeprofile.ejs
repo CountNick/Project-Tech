@@ -11,7 +11,7 @@
 
     <h1>Change profile</h1>
 
-    <form action="/" method = "POST">
+    <form action="/" method = "POST" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -23,7 +23,7 @@
                 
                 <img src="../img/icon/add.png" alt="add icon">
 
-                <input type="file">
+                <input type="file" accept="image/x-png,image/gif,image/jpeg" name="profilePic">
 
                 </label>
 
@@ -35,9 +35,9 @@
 
                 <textarea id="bio" name="bio" maxlength="700" ><%= users.bio %></textarea>
 
-                <label for="artists" name="artists">Artists:</label>
+                <label for="artists">Artists:</label>
 
-                <input type="text" id="artists">
+                <input type="text" id="artists" name="artists">
 
                 <!--<label for="mail">E-mail check:</label>
 

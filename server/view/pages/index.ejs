@@ -10,7 +10,17 @@
     <main>
         <article>
 
-            <img src="img/placeholder.png" alt="ProfilePictue">
+            <% if (users.cover) { %>
+
+                <img alt = "Profilepicture" src="../upload/<%= users.cover %>">
+
+            <% } else{%>
+
+                <img src="img/placeholder.png" alt="ProfilePictue">
+
+            <% } %>
+
+            
 
             <section>
                 <span>
@@ -20,14 +30,33 @@
                 </a>
                 </span>
 
-                <h1><%= users.name %>, <%= users.age %></h1>
+                <h1>
+                
+                    <%= users.name %>, 
+                    <%= users.age %>
+                    
+                </h1>
 
                 <p>
                     <%= users.bio %>
                 </p>
 
-     
+                <h3>Artists</h3>
                 
+                <ul>
+                    
+                    <% for (var index = 0; index < users.artists.length; index++) { %>
+                    
+                        <li><%= users.artists[index] %></li>
+                
+                    <% } %>
+                
+                </ul>
+
+
+                <p>
+                    <%= users.artists %>
+                </p>
                 
                 <h3>My hobbies</h3>
             </section>
