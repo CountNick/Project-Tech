@@ -12,7 +12,9 @@ var userSchema = new mongoose.Schema({
 
     bio: String,
 
-    artists: Array
+    artists: Array,
+
+    img: String
   });
 
   // eslint-disable-next-line no-unused-vars

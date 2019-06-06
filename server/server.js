@@ -9,8 +9,6 @@ require("dotenv").config();
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
 var User = require("../models/user.js");
 
-
-
 mongoose.connect("mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT + "/" + process.env.DB_NAME, {useNewUrlParser: true});
 
 var db = mongoose.connection;
@@ -20,15 +18,12 @@ var db = mongoose.connection;
 db.once("open", function(){
   
   console.log("Connected to MongoDb");
-
 });
-
 
 // Check connection for db errors
 db.on("error", function(err){
   
   console.log(err);
-
 });
 
 var app = express();
@@ -51,6 +46,7 @@ app.post("/remove", removeArtist);
 app.post("/", upload.single("profilePic"), changeInfo);
 app.use(notFound);
 
+//renders the user's profile page
 function home(req, res) {
 
   //Source findOne: https://stackoverflow.com/questions/7033331/how-to-use-mongoose-findone
@@ -61,7 +57,7 @@ function home(req, res) {
     }
 
     else{
-    
+
       res.render("index", { 
         pageTitle: users.name + "'s Profile", 
         users: users 
@@ -70,6 +66,7 @@ function home(req, res) {
   });
 }
 
+//renders the login page
 function login(req, res) {
  
   res.render("login", {
@@ -77,13 +74,15 @@ function login(req, res) {
   });
 }
 
+//renders the changeProfile page
 function changeProfile(req, res) {
 
-  User.findOne({}, function(err, users){
+  //finds the current user of the app, and sends data 
+  User.findOne({id: req.params.id}, function(err, users){
     if(err){
       console.log(err);
     }
-
+  
     else{
       res.render("changeprofile", {
         pageTitle: "Change profile",
@@ -95,7 +94,18 @@ function changeProfile(req, res) {
 
 function changeInfo(req, res) {
 
-  //ads a artist to the artists array
+  //Adds the filename to the profile image of user
+  User.updateOne(
+    {id: req.params.id},
+    {img: req.file.filename},
+    {safe: true}, function(err){
+      if(err){
+        console.log(err);
+      }
+    }
+  );
+
+  //adds a artist to the artists array
   User.findOneAndUpdate(
     {id: req.params.id},
     {$push: {artists: req.body.artists}}, 
@@ -113,12 +123,11 @@ function changeInfo(req, res) {
     {safe: true}, function(err){
 
     console.log(err);
-
     },
   );
 
+  //redirects to user profile when user submits
   res.redirect("/");
-
 }
 
 // Callback which generates 404 page 
@@ -129,23 +138,26 @@ function notFound(req, res) {
   });
 }
 
+//function which cancel the change info form
 function cancelInput(req, res){
   res.redirect("/");
 }
 
+//function to remove artist
 function removeArtist(req, res){
 
-  User.findOneAndUpdate(
+  User.updateOne(
     {id: req.params.id},
-    {$pull: {artists: req.body.removeartist}},
+    {$pull: {artists: req.body.remove}},
     {safe: true}, function(err){
 
       if(err){
-      console.log(err);
+        console.log(err);
       }
 
       else{
-      res.redirect("/changeProfile");
+        res.redirect("/changeProfile");
+        console.log(req.body.remove);
       }
     }
   );
@@ -155,5 +167,4 @@ function removeArtist(req, res){
 app.listen(5000, function() {
  
   console.log("Dev app listening on port 5000!");
-
 });
