@@ -260,3 +260,14 @@ article > img {
   flex-direction: column;
   color: black;
 }
+
+.artists li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.removeButton{
+  background-color: red;
+  color: white;
+}
