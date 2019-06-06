@@ -10,15 +10,16 @@
     <main>
         <article>
 
-            <% if (users.cover) { %>
+                <% if (users.img != null){ %>
 
-                <img alt = "Profilepicture" src="../upload/<%= users.cover %>">
+                <img src="upload/<%= users.img %>" alt = "Profilepicture">
 
-            <% } else{%>
+                <%} else{%>
 
                 <img src="img/placeholder.png" alt="ProfilePictue">
 
-            <% } %>
+                <% } %>
+           
 
             
 
@@ -43,7 +44,7 @@
 
                 <h3>Artists</h3>
                 
-                <ul>
+                <ul class ="artists">
                     
                     <% for (var index = 0; index < users.artists.length; index++) { %>
                     
@@ -53,10 +54,6 @@
                 
                 </ul>
 
-
-                <p>
-                    <%= users.artists %>
-                </p>
                 
                 <h3>My hobbies</h3>
             </section>

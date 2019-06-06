@@ -27,10 +27,6 @@
 
                 </label>
 
-                <!--<label for="name">Your name:</label>
-
-                <input type="text" id="name" name="name" value="<%= users.name %>">-->
-
                 <label for="bio">Bio:</label>
 
                 <textarea id="bio" name="bio" maxlength="700" ><%= users.bio %></textarea>
@@ -39,25 +35,26 @@
 
                 <input type="text" id="artists" name="artists">
 
-                <!--<label for="mail">E-mail check:</label>
+                <ul class= "artists">
+                    
+                    <% for (var index = 0; index < users.artists.length; index++) { %>
+                    
+                        <li>
+                        <p  name = remove><%= users.artists[index] %></p>
+                        <button type="submit" class="removeButton" value="<%= users.artists[index] %>" formaction="/remove" id="<%= users.artists[index] %>" name="remove">remove</button>
+                        </li>
+                
+                    <% } %>       
+ 
+                </ul>
 
-                <input type="email" id="mail" required>
 
-                <label for="username">Choose a username:</label>
 
-                <input type="text" id="username" required>
 
-                <label for="wachtwoord">Choose a password:</label>
-
-                <input type="password" id="wachtwoord" required>
-
-                <label for="wachtwoord">Check password:</label>
-
-                <input type="password" id="wachtwoord" required>-->
 
                 <input class="loginButton" type="submit" value="Save changes">
 
-                <button href="index" class="cancelButton">Cancel</button>
+                <button type="submit" href="index" class="cancelButton" formaction="/cancel">Cancel</button>
 
             </span>
 
