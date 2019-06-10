@@ -1,6 +1,36 @@
-# Anarchy Dating, Feature installation guide
+# Anarchy Dating
 
 ![Anarchy Dating logo](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/LogoRoze.png?raw=true)
+
+## Introduction
+
+Anarchydating is a conceptual website which is based on punks finding like minded people to go out on a date with. For this concept i worked out one feature, this feature makes it possible to fill in profile information such as:
+
+* Uploading a profile picture
+* Adding and changing a bio story in a user's profile
+* Adding and removing favorite artists from a list of favorite artists
+
+## Used NPM packages in this project
+
+In the making of this project i used a number of packages from the Node Package Manager:
+
+* Express framework
+  * used to make a server
+* Multer 
+  * Used to make file uploads available 
+* Body-parser
+  * Used to parse the body of to be posted data to the database
+* MongoDB
+  * Used to save user input
+* Mongoose
+  * Used to talk to the database in the node server
+* EJS templating engine
+  * Used to make the html pages modulair, and able to read data dynamically from the database
+* Dotenv
+  * Used to hide the databaseroute-, name et.
+* Node JS
+
+# Installation guide
 
 ## Step 1 
 
