@@ -14,19 +14,19 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 
 In the making of this project i used a number of packages from the Node Package Manager:
 
-* Express framework
+* [Express framework](https://www.npmjs.com/package/express)
   * used to make a server
-* Multer 
+* [Multer](https://www.npmjs.com/package/multer) 
   * Used to make file uploads available 
-* Body-parser
+* [Body-parser](https://www.npmjs.com/package/body-parser)
   * Used to parse the body of to be posted data to the database
 * MongoDB
   * Used to save user input
-* Mongoose
+* [Mongoose](https://www.npmjs.com/package/mongoose)
   * Used to talk to the database in the node server
-* EJS templating engine
+* [EJS templating engine](https://www.npmjs.com/package/ejs)
   * Used to make the html pages modulair, and able to read data dynamically from the database
-* Dotenv
+* [Dotenv](https://www.npmjs.com/package/dotenv)
   * Used to hide the databaseroute-, name et.
 * Node JS
 
