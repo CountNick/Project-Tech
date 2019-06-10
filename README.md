@@ -1,8 +1,8 @@
-# Anarchy Dating
+# :skull:Anarchy Dating:skull:
 
 ![Anarchy Dating logo](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/LogoRoze.png?raw=true)
 
-## Introduction
+## Introduction:point_left:
 
 Anarchydating is a conceptual website which is based on punks finding like minded people to go out on a date with. For this concept i worked out one feature, this feature makes it possible to fill in profile information such as:
 
@@ -10,7 +10,7 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 * Adding and changing a bio story in a user's profile
 * Adding and removing favorite artists from a list of favorite artists
 
-## Used NPM packages in this project
+## Used NPM packages in this project:package:
 
 In the making of this project i used a number of packages from the Node Package Manager:
 
@@ -30,7 +30,9 @@ In the making of this project i used a number of packages from the Node Package 
   * Used to hide the databaseroute-, name et.
 * Node JS
 
-# Installation guide
+
+
+# Installation guide:cd:
 
 ## Step 1 
 
