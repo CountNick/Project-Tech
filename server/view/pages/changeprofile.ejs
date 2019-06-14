@@ -40,12 +40,14 @@
                     <% for (var index = 0; index < users.artists.length; index++) { %>
                     
                         <li>
-                        <p  name = remove><%= users.artists[index] %></p>
-                        <button type="submit" class="removeButton" value="<%= users.artists[index] %>" formaction="/remove" id="<%= users.artists[index] %>" name="remove">remove</button>
+                        <p name="removePunk"><%= users.artists[index] %></p>
+                        <button type="submit" class="removeButton" value="<%= users.artists[index] %>" formaction="/remove" name="remove">remove</button>
                         </li>
                 
-                    <% } %>       
+                    <% } %>
+                
  
+
                 </ul>
 
 
