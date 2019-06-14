@@ -109,28 +109,6 @@ var uploadImage;
       }
 
     });
-  
-
-  //adds a artist to the artists array
-  // User.findOneAndUpdate(
-  //   {id: req.params.id},
-  //   {$push: {artists: req.body.artists}}, 
-  //   {safe: true}, function(err){
-
-  //   console.log(err);
-
-  //   },
-  // );
-  
-  // //finds and updates the user bio
-  // User.findOneAndUpdate(
-  //   {id: req.params.id},
-  //   {bio: req.body.bio}, 
-  //   {safe: true}, function(err){
-
-  //   console.log(err);
-  //   }
-  // );
 
   //redirects to user profile when user submits
   res.redirect("/");
