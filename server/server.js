@@ -16,18 +16,15 @@ var db = mongoose.connection;
 //Source connection check: https://www.youtube.com/watch?v=cVYQEvP-_PA
 //Check connection
 db.once("open", function(){
-  
   console.log("Connected to MongoDb");
 });
 
 // Check connection for db errors
 db.on("error", function(err){
-  
   console.log(err);
 });
 
 var app = express();
-
 app.use(express.static("static"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("views", "view/pages");
@@ -42,7 +39,6 @@ app.post("/cancel", cancelInput);
 //route for removing artist
 app.post("/remove", removeArtist);
 
-
 app.post("/", upload.single("profilePic"), changeInfo);
 app.use(notFound);
 
@@ -50,14 +46,13 @@ app.use(notFound);
 function home(req, res) {
 
   //Source findOne: https://stackoverflow.com/questions/7033331/how-to-use-mongoose-findone
-  User.findOne({}, function(err, users) {
+  User.findById({_id: process.env.SESSION_SECRET}, function(err, users) {
 
     if(err){
       console.log(err);
     }
 
     else{
-
       res.render("index", { 
         pageTitle: users.name + "'s Profile", 
         users: users 
@@ -68,7 +63,6 @@ function home(req, res) {
 
 //renders the login page
 function login(req, res) {
- 
   res.render("login", {
     pageTitle: "Login"
   });
@@ -94,45 +88,56 @@ function changeProfile(req, res) {
 
 function changeInfo(req, res) {
 
-  //Adds the filename to the profile image of user
-  User.updateOne(
-    {id: req.params.id},
-    {img: req.file.filename},
-    {safe: true}, function(err){
+  //Adds the filename to the profile image of user  
+var uploadImage;
+
+  if(req.file == undefined){
+    console.log("no image was uploaded");
+    uploadImage = "placeholder.png";
+  }
+  else{
+    console.log("hallo? ajhsgdjhasg");
+    uploadImage = req.file.filename;
+  }
+
+  User.findByIdAndUpdate(
+    {_id: process.env.SESSION_SECRET},
+    {img: uploadImage, $push: {artists: req.body.artists}, bio: req.body.bio},
+    {upsert: true}, function(err){
       if(err){
         console.log(err);
       }
-    }
-  );
+
+    });
+  
 
   //adds a artist to the artists array
-  User.findOneAndUpdate(
-    {id: req.params.id},
-    {$push: {artists: req.body.artists}}, 
-    {safe: true}, function(err){
+  // User.findOneAndUpdate(
+  //   {id: req.params.id},
+  //   {$push: {artists: req.body.artists}}, 
+  //   {safe: true}, function(err){
 
-    console.log(err);
+  //   console.log(err);
 
-    },
-  );
+  //   },
+  // );
+  
+  // //finds and updates the user bio
+  // User.findOneAndUpdate(
+  //   {id: req.params.id},
+  //   {bio: req.body.bio}, 
+  //   {safe: true}, function(err){
 
-  //finds and updates the user bio
-  User.findOneAndUpdate(
-    {id: req.params.id},
-    {bio: req.body.bio}, 
-    {safe: true}, function(err){
-
-    console.log(err);
-    },
-  );
+  //   console.log(err);
+  //   }
+  // );
 
   //redirects to user profile when user submits
   res.redirect("/");
 }
 
-// Callback which generates 404 page 
+// function which generates 404 page 
 function notFound(req, res) {
-
   res.status(404).render("notfound", {
     pageTitle: "404"
   });
@@ -147,8 +152,8 @@ function cancelInput(req, res){
 function removeArtist(req, res){
 
   User.updateOne(
-    {id: req.params.id},
-    {$pull: {artists: req.body.remove}},
+    {_id: req.params.id},
+    {$pull: {artists: req.body.removePunk}},
     {safe: true}, function(err){
 
       if(err){
@@ -165,6 +170,5 @@ function removeArtist(req, res){
 
 // Listen to port 5000
 app.listen(5000, function() {
- 
   console.log("Dev app listening on port 5000!");
 });
