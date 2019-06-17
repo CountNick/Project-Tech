@@ -107,9 +107,7 @@ var uploadImage;
       if(err){
         console.log(err);
       }
-
     });
-
   //redirects to user profile when user submits
   res.redirect("/");
 }
