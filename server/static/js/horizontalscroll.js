@@ -1,3 +1,10 @@
+/*
+Used sources:
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX
+https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+https://www.youtube.com/watch?v=C9EWifQ5xqA
+*/
+
 // puts the container span in variable
 var slide = document.querySelector(".xContainer");
 // var vor mouse down default set to false
@@ -48,7 +55,7 @@ slide.addEventListener("mousemove", function(event){
     // tracks where x is on movement 
     var movement = x - startX;
     
-    
+
     slide.scrollLeft = scrollLeft - movement;
 
 

@@ -44,7 +44,8 @@ h1 {
 h3 {
 
   font-size: 2rem;
-
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 nav {
@@ -299,14 +300,14 @@ article > img {
   scroll-snap-type: x mandatory; 
   overflow-x: scroll;
   scroll-snap-points-x: repeat(100%); 
-  transform: scale(1);
+  transform: scale(1.1);
   transition: .2s;
 }
 
 .xContainer.active{
   cursor: grabbing;
   cursor: -webkit-grabbing;
-  transform: scale(1.1);
+  transform: scale(1.2);
   scroll-snap-type: none; 
 }
 
