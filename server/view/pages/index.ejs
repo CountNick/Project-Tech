@@ -24,7 +24,7 @@
             
 
             <section>
-                <span>
+                <span class="adjustRight">
             
                 <a href= "changeprofile">
                 <button class ="adjustbutton"><img src="img/icon/pencil.png" alt="adjust"></button>
@@ -46,11 +46,15 @@
                 
                 <ul class ="artists">
                     
+                    <span class="xContainer">
+
                     <% for (var index = 0; index < users.artists.length; index++) { %>
                     
-                        <li><%= users.artists[index] %></li>
+                        <span class="divide"><div><img src="img/noise.png" alt="noiseIcon"></div>    <li><%= users.artists[index] %></li></span>
                 
                     <% } %>
+
+                    </span>
                 
                 </ul>
 
@@ -62,6 +66,7 @@
     </main>
 
 <footer><p>Anarchy Dating</p></footer>
+<script src="js/horizontalscroll.js"></script>
 </body>
 
 </html>
