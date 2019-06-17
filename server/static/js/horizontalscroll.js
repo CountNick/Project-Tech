@@ -11,7 +11,7 @@ var slide = document.querySelector(".xContainer");
 var isDown = false;
 // var to calculate where x is
 var startX;
-
+// standard set to 0 
 var scrollLeft;
 
 slide.addEventListener("mousedown", function(event){
@@ -40,23 +40,16 @@ slide.addEventListener("mouseup", function(){
 });
 
 slide.addEventListener("mousemove", function(event){
-
     // mouse is down stop function
     if(!isDown){
         return;
     }
-
     // prevents images being dragged and text being selected
     event.preventDefault(); 
-
     // stores where x is on mouse move
     var x = event.pageX - slide.offsetLeft;
-
     // tracks where x is on movement 
     var movement = x - startX;
-    
-
+    // calculates where the mousemove is when mous is moving
     slide.scrollLeft = scrollLeft - movement;
-
-
 });
