@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var multer = require("multer");
 var upload = multer({dest: "static/upload/"});
+var expressSession = require("express-session");
 require("dotenv").config();
 
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
@@ -36,11 +37,9 @@ app.get("/changeprofile", changeProfile);
 //route for cancelling the input of the form
 app.post("/cancel", cancelInput);
 
-//route for removing artist
-app.post("/remove", removeArtist);
-
 app.post("/", upload.single("profilePic"), changeInfo);
 app.use(notFound);
+app.use(expressSession({secret:process.env.SESSION_SECRECT,saveUninitialized:true,resave:false, cookie: {maxAge: 900000},expires: new Date(Date.now() + 900000) }));
 
 //renders the user's profile page
 function home(req, res) {
@@ -72,7 +71,7 @@ function login(req, res) {
 function changeProfile(req, res) {
 
   //finds the current user of the app, and sends data 
-  User.findOne({id: req.params.id}, function(err, users){
+  User.findById({_id: process.env.SESSION_SECRET}, function(err, users){
     if(err){
       console.log(err);
     }
@@ -92,11 +91,9 @@ function changeInfo(req, res) {
 var uploadImage;
 
   if(req.file == undefined){
-    console.log("no image was uploaded");
     uploadImage = "placeholder.png";
   }
   else{
-    console.log("hallo? ajhsgdjhasg");
     uploadImage = req.file.filename;
   }
 
@@ -122,26 +119,6 @@ function notFound(req, res) {
 //function which cancel the change info form
 function cancelInput(req, res){
   res.redirect("/");
-}
-
-//function to remove artist
-function removeArtist(req, res){
-
-  User.updateOne(
-    {_id: req.params.id},
-    {$pull: {artists: req.body.removePunk}},
-    {safe: true}, function(err){
-
-      if(err){
-        console.log(err);
-      }
-
-      else{
-        res.redirect("/changeProfile");
-        console.log(req.body.remove);
-      }
-    }
-  );
 }
 
 // Listen to port 5000
