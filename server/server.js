@@ -4,20 +4,22 @@ var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var multer = require("multer");
 var upload = multer({dest: "static/upload/"});
-var expressSession = require("express-session");
+//var expressSession = require("express-session");
 require("dotenv").config();
 
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
 var User = require("../models/user.js");
 
-mongoose.connect("mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT + "/" + process.env.DB_NAME, {useNewUrlParser: true});
+
+mongoose.connect("mongodb+srv://" + process.env.DB_USERNAME + ":" + process.env.DB_PASSWORD + "@" + process.env.DB_SERVER + "/" + process.env.DB_NAME + "?retry?Writes=true", { useNewUrlParser: true });
+
 
 var db = mongoose.connection;
 
 //Source connection check: https://www.youtube.com/watch?v=cVYQEvP-_PA
 //Check connection
 db.once("open", function(){
-  console.log("Connected to MongoDb");
+  console.log("Connected to MongoDb", db);
 });
 
 // Check connection for db errors
@@ -39,13 +41,15 @@ app.post("/cancel", cancelInput);
 
 app.post("/", upload.single("profilePic"), changeInfo);
 app.use(notFound);
-app.use(expressSession({secret:process.env.SESSION_SECRECT,saveUninitialized:true,resave:false, cookie: {maxAge: 900000},expires: new Date(Date.now() + 900000) }));
+//app.use(expressSession({secret:process.env.SESSION_SECRECT,saveUninitialized:true,resave:false, cookie: {maxAge: 900000},expires: new Date(Date.now() + 900000) }));
+app.delete("/changeProfile/:id", removeUser)
+
 
 //renders the user's profile page
 function home(req, res) {
 
   //Source findOne: https://stackoverflow.com/questions/7033331/how-to-use-mongoose-findone
-  User.findById({_id: process.env.SESSION_SECRET}, function(err, users) {
+  User.findOne({id: process.env.SESSION_SECRET}, function(err, users) {
 
     if(err){
       console.log(err);
@@ -53,8 +57,9 @@ function home(req, res) {
 
     else{
       res.render("index", { 
-        pageTitle: users.name + "'s Profile", 
-        users: users 
+        users: users,
+        pageTitle: users.name + "'s Profile"
+        
       });
     }
   });
@@ -71,7 +76,7 @@ function login(req, res) {
 function changeProfile(req, res) {
 
   //finds the current user of the app, and sends data 
-  User.findById({_id: process.env.SESSION_SECRET}, function(err, users){
+  User.findOne({id: process.env.SESSION_SECRET}, function(err, users){
     if(err){
       console.log(err);
     }
@@ -97,8 +102,8 @@ var uploadImage;
     uploadImage = req.file.filename;
   }
 
-  User.findByIdAndUpdate(
-    {_id: process.env.SESSION_SECRET},
+  User.findOneAndUpdate(
+    {id: process.env.SESSION_SECRET},
     {img: uploadImage, $push: {artists: req.body.artists}, bio: req.body.bio},
     {upsert: true}, function(err){
       if(err){
@@ -119,6 +124,19 @@ function notFound(req, res) {
 //function which cancel the change info form
 function cancelInput(req, res){
   res.redirect("/");
+}
+
+function removeUser(req, res){
+
+  User.findByIdAndRemove({_id: req.params.id}, function(err){
+
+    if(err){
+        console.log("Something went wrong", err);
+    }
+
+      res.redirect("login")
+
+  });
 }
 
 // Listen to port 5000
