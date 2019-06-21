@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+var port = process.env.PORT || 5000;
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
@@ -6,6 +7,7 @@ var multer = require("multer");
 var upload = multer({ dest: "static/upload/" });
 var session = require("express-session");
 require("dotenv").config();
+
 
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
 var User = require("../models/user.js");
@@ -42,6 +44,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("views", "view/pages");
 app.set("view engine", "ejs");
 app.get("/", login);
+app.get("/profile/delete/:id", removeUser);
 
 app.use(
   session({
@@ -62,9 +65,6 @@ app.post("/", upload.single("profilePic"), changeInfo);
 app.post("/logging", loggingIn);
 app.use(notFound);
 
-
-app.delete("/remove/:id", removeUser);
-
 //renders the login page
 function login(req, res) {
   res.render("login", {
@@ -72,34 +72,33 @@ function login(req, res) {
   });
 }
 
-function loggingIn(req, res){
-
+function loggingIn(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
-  User.findOne({username: username, password: password}, function(err, users){
-
-    if(err){
+  User.findOne({ username: username, password: password }, function(
+    err,
+    users
+  ) {
+    if (err) {
       console.log(err);
     }
 
     req.session.users = users;
-    
-    if(!users){
+
+    if (!users) {
       res.redirect(notFound);
     }
-    console.log("Session is:",users)
+    console.log("Session is:", users);
     res.render("index", {
       users: users,
       pageTitle: users.name + "'s Profile"
-      
     });
   });
 }
 
 //renders the changeProfile page
 function changeProfile(req, res) {
-
   console.log("Session is: >>>>", req.session.users.img);
 
   // finds the current user of the app, and sends data
@@ -115,17 +114,15 @@ function changeProfile(req, res) {
   });
 }
 
-function profile(req, res){
-
-  User.findById(req.session.users, function(err, users){
-
-    if(err){
+function profile(req, res) {
+  //finds the current logged in user, and renders content in profile template
+  User.findById(req.session.users, function(err, users) {
+    if (err) {
       console.log(err);
-    } else{
+    } else {
       res.render("index", {
         users: users,
         pageTitle: users.name + "'s Profile"
-        
       });
     }
   });
@@ -135,12 +132,14 @@ function changeInfo(req, res) {
   //Adds the filename to the profile image of user
   var uploadImage;
 
+  // if user doesn't upload image, image isn't overwritten
   if (req.file == undefined) {
-    uploadImage =  req.session.users.img;
+    uploadImage = req.session.users.img;
   } else {
     uploadImage = req.file.filename;
   }
 
+  //updates user bio, artists, and image on submit
   User.findByIdAndUpdate(
     req.session.users,
     {
@@ -172,16 +171,16 @@ function cancelInput(req, res) {
 }
 
 function removeUser(req, res) {
-  User.findByIdAndRemove( req.session.users , function(err) {
+  //deletes the current user's profile from db
+  User.remove({ _id: req.params.id }, function(err) {
     if (err) {
       console.log("Something went wrong", err);
     }
-
     res.redirect("/");
   });
 }
 
 // Listen to port 5000
-app.listen(5000, function() {
-  console.log("Dev app listening on port 5000!");
+app.listen(port, function() {
+  console.log("Dev app listening on port: " + port);
 });
