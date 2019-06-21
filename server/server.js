@@ -67,7 +67,7 @@ app.use(notFound);
 
 //renders the login page
 function login(req, res) {
-  res.render("login", {
+  res.render("login.ejs", {
     pageTitle: "Login"
   });
 }
@@ -90,7 +90,7 @@ function loggingIn(req, res) {
       res.redirect(notFound);
     }
     console.log("Session is:", users);
-    res.render("index", {
+    res.render("index.ejs", {
       users: users,
       pageTitle: users.name + "'s Profile"
     });
@@ -106,7 +106,7 @@ function changeProfile(req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("changeprofile", {
+      res.render("changeprofile.ejs", {
         pageTitle: "Change profile",
         users: users
       });
@@ -120,7 +120,7 @@ function profile(req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("index", {
+      res.render("index.ejs", {
         users: users,
         pageTitle: users.name + "'s Profile"
       });
