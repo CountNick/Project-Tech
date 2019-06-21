@@ -6,9 +6,20 @@
 
 Anarchydating is a conceptual website which is based on punks finding like minded people to go out on a date with. For this concept i worked out one feature, this feature makes it possible to fill in profile information such as:
 
+## Functionalities:
+
+* Logging in
+  * Users are able to see their profile and make changes to their profile by logging in 
+
 * Uploading a profile picture
+  * Users are able to upload one profile picture
+
 * Adding and changing a bio story in a user's profile
-* Adding and removing favorite artists from a list of favorite artists
+  * Users are able to change their bio story
+
+* Adding artists
+  * Users are able to add their favorite artists to a list of artists
+  
 
 ## Used NPM packages in this project:package:
 
