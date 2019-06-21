@@ -41,7 +41,7 @@ db.on("error", function(err) {
 var app = express();
 app.use(express.static("static"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set("views", "view/pages");
+app.set('views', __dirname + "/view/pages");
 app.set("view engine", "ejs");
 app.get("/", login);
 app.get("/profile/delete/:id", removeUser);
