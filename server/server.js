@@ -4,7 +4,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var multer = require("multer");
-var upload = multer({ dest: "static/upload/" });
+var upload = multer({ dest: "static/tmp/" });
 var session = require("express-session");
 var path = require("path");
 require("dotenv").config();
