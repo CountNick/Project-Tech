@@ -63,7 +63,7 @@ app.get("/profile", profile);
 //route for cancelling the input of the form
 app.post("/cancel", cancelInput);
 
-app.post("/", upload.single("profilePic"), changeInfo);
+app.post("/change", upload.single("profilePic"), changeInfo);
 app.post("/logging", loggingIn);
 app.use(notFound);
 
