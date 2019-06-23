@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 var multer = require("multer");
 var upload = multer({ dest: "static/upload/" });
 var session = require("express-session");
-var path = require("path")
+var path = require("path");
 require("dotenv").config();
 
 
