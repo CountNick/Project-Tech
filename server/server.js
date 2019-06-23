@@ -4,7 +4,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var multer = require("multer");
-
+var upload = multer({ dest: "static/upload/" });
 var session = require("express-session");
 var path = require("path");
 require("dotenv").config();
@@ -41,7 +41,7 @@ db.on("error", function(err) {
 
 var app = express();
 app.use(express.static(path.join(__dirname, "static")));
-var upload = multer({ dest: "static/upload/" });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + "/view/pages");
 app.set("view engine", "ejs");
