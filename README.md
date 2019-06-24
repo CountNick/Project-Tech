@@ -6,9 +6,6 @@
 
 Anarchydating is a conceptual website which is based on punks finding like minded people to go out on a date with. For this concept i worked out one feature, this feature makes it possible to fill in profile information such as:
 
-## See the app in action at:
-[Anarchy Dating](https://anarchydating.herokuapp.com/logging)
-
 ## Functionalities:
 
 * Logging in
@@ -22,6 +19,12 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 
 * Adding artists
   * Users are able to add their favorite artists to a list of artists
+  
+  
+![Anarchy dating flow](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/ReadmeFlow.jpg?raw=true)
+
+## See the app in action at:
+[Anarchy Dating](https://anarchydating.herokuapp.com/logging)
   
 
 ## Used NPM packages in this project:package:
