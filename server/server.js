@@ -53,8 +53,7 @@ app.use(
     secret: "secret",
     saveUninitialized: false,
     resave: false,
-    cookie: { maxAge: 900000 },
-    expires: new Date(Date.now() + 900000)
+    cookie: {},
   })
 );
 
