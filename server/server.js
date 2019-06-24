@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-//var port = process.env.PORT || 5000;
+var port = process.env.PORT || 5000;
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
@@ -183,6 +183,6 @@ function removeUser(req, res) {
 }
 
 // Listen to port 5000
-// app.listen(port, function() {
-//   console.log("Dev app listening on port: " + port);
-// });
+app.listen(port, function() {
+  console.log("Dev app listening on port: " + port);
+});
