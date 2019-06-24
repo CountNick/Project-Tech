@@ -24,7 +24,7 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 ![Anarchy dating flow](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/ReadmeFlow.jpg?raw=true)
 
 ## See the app in action at:
-[Anarchy Dating](https://anarchydating.herokuapp.com/logging)
+[Anarchy Dating](https://anarchydating.herokuapp.com/)
   
 
 ## Used NPM packages in this project:package:
