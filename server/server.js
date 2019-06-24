@@ -63,7 +63,7 @@ app.get("/profile", profile);
 //route for cancelling the input of the form
 app.post("/cancel", cancelInput);
 
-app.post("/change", upload.single("avatar"), changeInfo);
+app.post("/change", upload.single("profilePic"), changeInfo);
 app.post("/logging", loggingIn);
 app.use(notFound);
 
@@ -101,7 +101,7 @@ function loggingIn(req, res) {
 
 //renders the changeProfile page
 function changeProfile(req, res) {
-  console.log("Session is: >>>>", req.session.users.avatar);
+  console.log("Session is: >>>>", req.session.users.img);
 
   // finds the current user of the app, and sends data
   User.findById(req.session.users, function(err, users) {
@@ -138,7 +138,7 @@ function changeInfo(req, res) {
 
   // if user doesn't upload image, image isn't overwritten
   if (req.file == undefined) {
-    uploadImage = req.session.users.avatar;
+    uploadImage = req.session.users.img;
   } else {
     uploadImage = req.file.filename;
   }
