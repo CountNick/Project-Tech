@@ -20,6 +20,12 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 * Adding artists
   * Users are able to add their favorite artists to a list of artists
   
+  
+![Anarchy dating flow](https://github.com/CountNick/Project-Tech/blob/master/Wiki_img/ReadmeFlow.jpg?raw=true)
+
+## See the app in action at:
+[Anarchy Dating](https://anarchydating.herokuapp.com/)
+  
 
 ## Used NPM packages in this project:package:
 
@@ -39,6 +45,8 @@ In the making of this project i used a number of packages from the Node Package 
   * Used to make the html pages modulair, and able to read data dynamically from the database
 * [Dotenv](https://www.npmjs.com/package/dotenv)
   * Used to hide the databaseroute-, name et.
+* [Express-sessions](https://www.npmjs.com/package/express-session)
+  * Used to show different users their specific information
 * Node JS
 
 
