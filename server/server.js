@@ -53,7 +53,8 @@ app.use(
     secret: "secret",
     saveUninitialized: false,
     resave: false,
-    cookie: {},
+    cookie: { maxAge: 900000 },
+    expires: new Date(Date.now() + 900000)
   })
 );
 
@@ -88,7 +89,7 @@ function loggingIn(req, res) {
     req.session.users = users;
 
     if (!users) {
-      res.redirect(notFound);
+      res.redirect("/notfound");
     }
     console.log("Session is:", users);
     res.redirect("/profile");
@@ -130,7 +131,9 @@ function changeInfo(req, res) {
   //Adds the filename to the profile image of user
   var uploadImage;
 
-  console.log("This is the file requs", req.file);
+  //console.log("This is the file requs", req.file);
+
+  console.log(req.session.users.img);
 
   // if user doesn't upload image, image isn't overwritten
   if (req.file == undefined) {
