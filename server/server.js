@@ -41,13 +41,13 @@ db.on("error", function(err) {
 
 var app = express();
 app.use(express.static(path.join(__dirname, "static")));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + "/view/pages");
 app.set("view engine", "ejs");
 app.get("/", login);
 app.get("/profile/delete/:id", removeUser);
 
+// initializing session
 app.use(
   session({
     secret: "secret",
