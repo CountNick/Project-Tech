@@ -45,6 +45,8 @@ In the making of this project i used a number of packages from the Node Package 
   * Used to make the html pages modulair, and able to read data dynamically from the database
 * [Dotenv](https://www.npmjs.com/package/dotenv)
   * Used to hide the databaseroute-, name et.
+* [Express-sessions](https://www.npmjs.com/package/express-session)
+  * Used to show different users their specific information
 * Node JS
 
 
