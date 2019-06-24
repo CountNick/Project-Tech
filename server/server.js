@@ -134,6 +134,8 @@ function changeInfo(req, res) {
   //Adds the filename to the profile image of user
   var uploadImage;
 
+  console.log("This is the file requs", req.file);
+
   // if user doesn't upload image, image isn't overwritten
   if (req.file == undefined) {
     uploadImage = req.session.users.img;
