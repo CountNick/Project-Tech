@@ -92,10 +92,7 @@ function loggingIn(req, res) {
       res.redirect(notFound);
     }
     console.log("Session is:", users);
-    res.render("index.ejs", {
-      users: users,
-      pageTitle: users.name + "'s Profile"
-    });
+    res.redirect("/profile");
   });
 }
 
