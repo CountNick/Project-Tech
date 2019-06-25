@@ -9,7 +9,6 @@ var session = require("express-session");
 var path = require("path");
 require("dotenv").config();
 
-
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
 var User = require("../models/user.js");
 
@@ -42,7 +41,7 @@ db.on("error", function(err) {
 var app = express();
 app.use(express.static(path.join(__dirname, "static")));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('views', __dirname + "/view/pages");
+app.set("views", __dirname + "/view/pages");
 app.set("view engine", "ejs");
 app.get("/", login);
 app.get("/profile/delete/:id", removeUser);
@@ -51,10 +50,9 @@ app.get("/profile/delete/:id", removeUser);
 app.use(
   session({
     secret: "secret",
-    saveUninitialized: false,
+    saveUninitialized: true,
     resave: false,
-    cookie: { maxAge: 900000 },
-    expires: new Date(Date.now() + 900000)
+    cookie: { maxAge: 60 * 10000 }
   })
 );
 
@@ -65,6 +63,7 @@ app.post("/cancel", cancelInput);
 
 app.post("/change", upload.single("profilePic"), changeInfo);
 app.post("/logging", loggingIn);
+app.get("/logout", logOut);
 app.use(notFound);
 
 //renders the login page
@@ -91,15 +90,25 @@ function loggingIn(req, res) {
     if (!users) {
       res.redirect("/notfound");
     }
-    console.log("Session is:", users);
+    //console.log("Session is:", users);
     res.redirect("/profile");
   });
 }
 
+function logOut(req, res) {
+  if (req.session) {
+    req.session.destroy(function(err) {
+      if (err) {
+        console.log("Something went wrong", err);
+      } else {
+        res.redirect("/");
+      }
+    });
+  }
+}
+
 //renders the changeProfile page
 function changeProfile(req, res) {
-  console.log("Session is: >>>>", req.session.users.img);
-
   // finds the current user of the app, and sends data
   User.findById(req.session.users, function(err, users) {
     if (err) {
@@ -130,10 +139,6 @@ function profile(req, res) {
 function changeInfo(req, res) {
   //Adds the filename to the profile image of user
   var uploadImage;
-
-  //console.log("This is the file requs", req.file);
-
-  console.log(req.session.users.img);
 
   // if user doesn't upload image, image isn't overwritten
   if (req.file == undefined) {
