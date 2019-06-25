@@ -95,3 +95,6 @@ When the server is running you can visit the following link to see the app runni
 ```
 http://localhost:5000
 ```
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
