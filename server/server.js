@@ -39,31 +39,40 @@ db.on("error", function(err) {
 });
 
 var app = express();
-app.use(express.static(path.join(__dirname, "static")));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set("views", __dirname + "/view/pages");
-app.set("view engine", "ejs");
-app.get("/", login);
-app.get("/profile/delete/:id", removeUser);
 
+app.use(express.static(path.join(__dirname, "static")));
+//initializes body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+//sets path to templates in views directory
+app.set("views", __dirname + "/view/pages");
+//sets the view engine to ejs
+app.set("view engine", "ejs");
+//gets the home page
+app.get("/", login);
+//gets the delete route
+app.get("/profile/delete/:id", removeUser);
 // initializing session
 app.use(
   session({
     secret: "secret",
     saveUninitialized: true,
-    resave: false,
+    resave: true,
     cookie: { maxAge: 60 * 10000 }
   })
 );
-
+// gets the changeprofile route
 app.get("/changeprofile", changeProfile);
+//gets the profile route
 app.get("/profile", profile);
 //route for cancelling the input of the form
 app.post("/cancel", cancelInput);
-
+//handles the post thats's being triggered on /change
 app.post("/change", upload.single("profilePic"), changeInfo);
+//handles the login post thats being triggered on /logging
 app.post("/logging", loggingIn);
+//gets the logout route
 app.get("/logout", logOut);
+//uses 404 when url is not found
 app.use(notFound);
 
 //renders the login page
@@ -125,6 +134,9 @@ function changeProfile(req, res) {
 function profile(req, res) {
   //finds the current logged in user, and renders content in profile template
   User.findById(req.session.users, function(err, users) {
+    //puts the users session in a var
+    req.session.users = users;
+
     if (err) {
       console.log(err);
     } else {
