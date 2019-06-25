@@ -25,7 +25,9 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 
 ## See the app in action at:
 [Anarchy Dating](https://anarchydating.herokuapp.com/)
-  
+
+## Want to see my whole research process?
+Check out the [project wiki](https://github.com/CountNick/Project-Tech/wiki)
 
 ## Used NPM packages in this project:package:
 
