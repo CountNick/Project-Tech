@@ -12,6 +12,7 @@ require("dotenv").config();
 //Source using models and mongoose: https://www.youtube.com/watch?v=cVYQEvP-_PA
 var User = require("../models/user.js");
 
+//Connects to the mongo Atlas db
 mongoose.connect(
   "mongodb+srv://" +
     process.env.DB_USERNAME +
@@ -25,6 +26,7 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
+// Puts the db connection in shortened var
 var db = mongoose.connection;
 
 //Source connection check: https://www.youtube.com/watch?v=cVYQEvP-_PA
@@ -33,13 +35,15 @@ db.once("open", function() {
   console.log("Connected to MongoDb");
 });
 
-// Check connection for db errors
+//Check connection for db errors
 db.on("error", function(err) {
   console.log(err);
 });
 
+//Initializes express
 var app = express();
 
+//Sets the source static directory
 app.use(express.static(path.join(__dirname, "static")));
 //initializes body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -82,10 +86,14 @@ function login(req, res) {
   });
 }
 
+//login function
 function loggingIn(req, res) {
+  //var for username
   var username = req.body.username;
+  //var for password
   var password = req.body.password;
 
+  //finds the user that's currnetly logging in
   User.findOne({ username: username, password: password }, function(
     err,
     users
@@ -94,22 +102,27 @@ function loggingIn(req, res) {
       console.log(err);
     }
 
+    //puts the session request in users
     req.session.users = users;
 
+    //If no users is logged in, redirect to 404
     if (!users) {
       res.redirect("/notfound");
     }
-    //console.log("Session is:", users);
+    //Redirects the logged in user to profile page
     res.redirect("/profile");
   });
 }
 
+//function that logs user out
 function logOut(req, res) {
+  // if a user is logged in session can get destroyed
   if (req.session) {
     req.session.destroy(function(err) {
       if (err) {
         console.log("Something went wrong", err);
       } else {
+        // when dession is succesfully destroyed redirect to login page
         res.redirect("/");
       }
     });
