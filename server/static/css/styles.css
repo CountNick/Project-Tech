@@ -311,3 +311,15 @@ article > img {
   scroll-snap-type: none; 
 }
 
+.removeAccount{
+  text-align: center;
+  margin-top: 2rem;
+  color: red;
+  text-decoration: none;
+}
+
+.removeAccount a:visited{
+
+  color: red;
+
+}
