@@ -8,16 +8,16 @@ Anarchydating is a conceptual website which is based on punks finding like minde
 
 ## Functionalities:
 
-* Logging in
+* **Logging in**
   * Users are able to see their profile and make changes to their profile by logging in 
 
-* Uploading a profile picture
+* **Uploading a profile picture**
   * Users are able to upload one profile picture
 
-* Adding and changing a bio story in a user's profile
+* **Adding and changing a bio story in a user's profile**
   * Users are able to change their bio story
 
-* Adding artists
+* **Adding artists**
   * Users are able to add their favorite artists to a list of artists
   
   
